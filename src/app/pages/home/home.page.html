@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="isIOS" (click)="beginSession()">
+      <img src="assert/nfc-logo-icon-18-49.png" alt="NFC" class="nfcLogo">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollCatcher>
+  <ion-refresher slot="fixed" (ionRefresh)="refreshDevices($event)" pullMin="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Devices
+      </ion-label>
+    </ion-list-header>
+    <ng-container *ngFor="let device of devices">
+      <ng-container [ngTemplateOutlet]="isConnected(device)? disconnectBlock : connectBlock"
+        [ngTemplateOutletContext]="{device: device}">
+      </ng-container>
+    </ng-container>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-button *ngIf="!comService.isScanning" (click)="refreshDevices()" expand="full">
+    Start scan
+  </ion-button>
+  <ion-button *ngIf="comService.isScanning" (click)="stopScan()" expand="full">
+    Stop scan
+  </ion-button>
+</ion-footer>
+
+<ng-template #connectBlock let-device="device">
+  <ion-item button color="light" (click)="connect(device)">
+    {{device.name}}
+    <rssi slot="end" *ngIf="device.rssi" [bars]="device.rssi | rssiToBars"></rssi>
+  </ion-item>
+</ng-template>
+<ng-template #disconnectBlock let-device="device">
+  <ion-item button color="primary" (click)="disconnect()" detail="true" detailIcon="checkmark-circle">
+    {{device.name}}
+  </ion-item>
+</ng-template>

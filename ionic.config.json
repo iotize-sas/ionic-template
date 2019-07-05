@@ -1,0 +1,7 @@
+{
+  "name": "IoTizeToolBox",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

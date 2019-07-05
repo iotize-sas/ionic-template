@@ -1,0 +1,14 @@
+.rssi-container {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    contain: strict;
+}
+
+.bar {
+    rect {
+        fill: currentColor;
+        stroke: black;
+        stroke-width: 3;
+    }
+}

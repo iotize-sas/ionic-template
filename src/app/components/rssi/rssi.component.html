@@ -1,0 +1,20 @@
+<div class="rssi-container">
+  <svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    class="chart" aria-labelledby="title" role="img">
+    <svg x="6" class="bar" [attr.color]="color">
+      <rect height="100" x="10" y="400" width="80" rx="30" [attr.fill-opacity]="bars >= 1? 1:0"></rect>
+    </svg>
+    <svg x="106" class="bar" [attr.color]="color">
+      <rect height="200" x="10" y="300" width="80" rx="30" [attr.fill-opacity]="bars >= 2? 1:0"></rect>
+    </svg>
+    <svg x="206" class="bar" [attr.color]="color">
+      <rect height="300" x="10" y="200" width="80" rx="30" [attr.fill-opacity]="bars >= 3? 1:0"></rect>
+    </svg>
+    <svg x="306" class="bar" [attr.color]="color">
+      <rect height="400" x="10" y="100" width="80" rx="30" [attr.fill-opacity]="bars >= 4? 1:0"></rect>
+    </svg>
+    <svg x="406" class="bar" [attr.color]="color">
+      <rect height="500" x="10" width="80" rx="30" [attr.fill-opacity]="bars >= 5? 1:0"></rect>
+    </svg>
+  </svg>
+</div>

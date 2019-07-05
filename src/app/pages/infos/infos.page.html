@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Infos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="tapInfos">
+      <ion-list-header color="secondary">TAP</ion-list-header>
+        <ion-item>
+          <ion-label position="stacked">Model</ion-label>
+          {{tapInfos.model? tapInfos.model: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Serial Number</ion-label>.
+          {{tapInfos.sn? tapInfos.sn: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">AppName</ion-label>
+          {{tapInfos.appName? tapInfos.appName: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Current Host Protocol</ion-label>
+          {{tapInfos.currentProtocol? tapInfos.currentProtocol: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Available Protocols</ion-label>
+          {{tapInfos.availableProtocols? tapInfos.availableProtocols: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Firmware Version</ion-label>
+          {{tapInfos.firmwareVersion? tapInfos.firmwareVersion: ''}}
+        </ion-item>
+        <ion-list-header color="secondary">TARGET</ion-list-header>
+        <ion-item>
+          <ion-label position="stacked">Current Protocol</ion-label>
+          {{tapInfos.targetCurrentProtocol? tapInfos.targetCurrentProtocol: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Available Protocols</ion-label>
+          {{tapInfos.targetAvailableProtocol? tapInfos.targetAvailableProtocol: ''}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">FirmwareVersion</ion-label>
+          {{tapInfos.targetFirmwareVersion? tapInfos.targetFirmwareVersion: ''}}
+        </ion-item>
+    </ion-list>
+</ion-content>
