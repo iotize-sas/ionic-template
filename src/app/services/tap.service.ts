@@ -49,23 +49,6 @@ export class TapService {
           throw err;
         }
       }
-      // Disconnect from target, check for current protocol and connect if Modbus or Serial is available
-      try {
-        const response = await this.tap.service.target.disconnect();
-        if (!response.isSuccessful()) {
-          this.disconnect();
-          throw new Error(ResultCodeTranslation[response.codeRet()]);
-        }
-      } catch (err) {
-        console.error('[TapService] ', err.message? err.message: err);
-      // throw err;
-      }
-      const protocol = (await this.tap.service.target.getProtocol()).body();
-      if (protocol !== TargetProtocol.MODBUS && protocol !== TargetProtocol.SERIAL_STANDARD && protocol !== TargetProtocol.SERIAL_VIA_TAPNPASS) {
-        await this.disconnect();
-        throw new Error("Tap is not configured for serial or modbus communication");
-      }
-        await this.tap.service.target.connect();
     }
 
     disconnect(){
